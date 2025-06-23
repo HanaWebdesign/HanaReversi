@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>Hana作オセロ</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>オセロ</h1>
+
+  <div id="turn">現在のターン: 黒（あなた）</div>
+  <div id="score">黒: 2 - 白: 2</div>
+<label>
+  <input type="checkbox" id="highlight-toggle">
+  合法手をハイライト表示する
+</label>
+  <div>
+    CPUレベル:
+    <select id="cpu-level">
+      <option value="1">弱い</option>
+      <option value="2">強い</option>
+      <option value="3">すごく強い</option>
+    </select>
+  </div>
+
+  <div id="board"></div>
+
+  <button id="reset-btn">リセット</button>
+
+  <script src="main.js"></script>
+</body>
+</html>

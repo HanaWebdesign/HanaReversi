@@ -1,0 +1,96 @@
+body {
+  font-family: 'Arial', 'Meiryo', sans-serif;
+  background-color: #2e2e2e;
+  color: #f8d4e8;
+  text-align: center;
+  padding: 20px;
+}
+
+h1 {
+  margin-bottom: 10px;
+  font-size: 32px;
+  color: #ffb6c1;
+  text-shadow: 1px 1px 3px black;
+}
+
+#board {
+  display: grid;
+  grid-template-columns: repeat(8, 60px);
+  grid-template-rows: repeat(8, 60px);
+  gap: 4px;
+  margin: 20px auto;
+  background-color: #000;
+  padding: 4px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(255, 182, 193, 0.6);
+  width: fit-content;
+}
+
+.cell {
+  width: 60px;
+  height: 60px;
+  background-color: #4a4a4a;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.cell:hover {
+  transform: scale(1.05);
+  background-color: #5e5e5e;
+}
+
+.black::before {
+  content: "🖤";
+  font-size: 30px;
+}
+
+.white::before {
+  content: "🤍";
+  font-size: 30px;
+}
+
+#turn, #score {
+  font-size: 18px;
+  margin: 12px 0;
+  color: #ffc0cb;
+}
+
+#cpu-level {
+  font-size: 16px;
+  padding: 6px 12px;
+  margin-top: 10px;
+  background-color: #ffb6c1;
+  color: black;
+  border: none;
+  border-radius: 8px;
+}
+
+#reset-btn {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+  background: linear-gradient(to right, #ff9ecb, #ffc0cb);
+  color: #2e2e2e;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(255, 192, 203, 0.6);
+  transition: background 0.3s ease;
+}
+
+#reset-btn:hover {
+  background: linear-gradient(to right, #ffc0cb, #ff9ecb);
+}
+
+select {
+  margin-top: 5px;
+}
+
+.cell.highlight {
+  outline: 2px dashed #ff99cc;
+  outline-offset: -3px;
+}

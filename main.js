@@ -108,34 +108,40 @@ function getFlippableStones(x, y, player) {
   return result;
 }
 
-// クリック時の処理（CPUもここから処理再利用）
 function handleClick(x, y) {
   if (board[y][x] !== 0) return;
 
   const flipped = getFlippableStones(x, y, currentTurn);
   if (flipped.length === 0) return;
 
+  // 石を置く＆裏返す
   board[y][x] = currentTurn;
   for (const [fx, fy] of flipped) {
     board[fy][fx] = currentTurn;
   }
 
+  // 次のターンを判定
   const nextTurn = 3 - currentTurn;
+  const nextMoves = getValidMoves(nextTurn);
+  const currentMoves = getValidMoves(currentTurn);
 
-  if (getValidMoves(nextTurn).length > 0) {
+  if (nextMoves.length > 0) {
     currentTurn = nextTurn;
     drawBoard();
-  if (currentTurn === 2) {
-    setTimeout(cpuMove, 500); // 少し待ってからCPUの手を打つ
-  }
-
-  } else if (getValidMoves(currentTurn).length > 0) {
+    if (currentTurn === 2) {
+      setTimeout(cpuMove, 500); // CPUの手番
+    }
+  } else if (currentMoves.length > 0) {
     alert(`${nextTurn === 1 ? "黒" : "白"}は置ける場所がないのでパス！`);
     drawBoard();
+    if (currentTurn === 2) {
+      setTimeout(cpuMove, 500); // CPU続行
+    }
   } else {
-    endGame();
+    endGame(); // 両方パスで終了
   }
 }
+
 
 // CPUの手（ランダム）
 function cpuMove() {
